@@ -1,0 +1,10 @@
+Para configurar la api de node:
+-Crar carpeta API
+-Dentro de API:
+npm init -y
+npm i express mysql
+-Crear archivo dbConfig.js
+-Crear las carpetas modelo, controlador y ruta adentro de config(adentro de src)
+npm i body-parser
+-Crear carpeta index adentro de src
+node index.js
