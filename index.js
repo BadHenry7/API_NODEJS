@@ -18,8 +18,8 @@ app.use(
       origin: [
         "http://localhost:5173", // Svelte en desarrollo
         "http://localhost:3000", // Backend en desarrollo
-        "https://22b9-191-110-53-32.ngrok-free.app", // Ngrok
-        "https://b45d-161-10-153-168.ngrok-free.app", // Ngrok
+        "https://f882-191-110-53-32.ngrok-free.app", // Ngrok
+        "https://3f44-191-110-53-32.ngrok-free.app", // Ngrok
         "https://api-nodejs-buxf.onrender.com"
       ],
       credentials: true, // Si necesitas enviar cookies o headers con autenticación

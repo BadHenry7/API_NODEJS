@@ -37,8 +37,8 @@ module.exports={
     },
 
     createhospital: (req, res)=>{
-        const {nombre_hospitales, direccion_hospital, estado}= req.body;
-        hospitalesModel.createhospital(nombre_hospitales, direccion_hospital, estado, (err, result) => {
+        const {nombre_hospital, direccion_hospital, estado}= req.body;
+        hospitalesModel.createhospital(nombre_hospital, direccion_hospital, estado, (err, result) => {
             if (err) {
                 res.status(500).json({ error: err.message });
                 console.log(err)
