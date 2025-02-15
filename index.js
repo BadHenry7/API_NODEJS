@@ -2,9 +2,9 @@ const express= require('express');
 const bodyParser = require('body-parser');
 
 const personaRoutes= require ('./src/routes/personaRoutes');
-const imagenesRoutes= require ('./src/routes/imagenesRoutes');
-const contactoRoutes= require ('./src/routes/contactoRoutes');
-const recetasRoutes= require ('./src/routes/recetasRoutes');
+const especialidadesRoutes= require ('./src/routes/especialidadesRoutes');
+const hospitalesRoutes= require ('./src/routes/hospitalesRoutes');
+const salas_Routes= require ('./src/routes/salasRoutes');
 
 
 const app = express();
@@ -14,9 +14,9 @@ app.use(bodyParser.json());
 
 //rutas
 app.use('/api/personas', personaRoutes);
-app.use('/api/imagenes', imagenesRoutes);
-app.use('/api/contactos', contactoRoutes);
-app.use('/api/recetas', recetasRoutes);
+app.use('/api/hospitales', hospitalesRoutes);
+app.use('/api/especialidades', especialidadesRoutes);
+app.use('/api/salas', salas_Routes);
 
 
 //iniciar el servidor
