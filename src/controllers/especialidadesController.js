@@ -1,11 +1,11 @@
-const imagenesModel = require('../models/imagenesModel')
+const especialidadesModel = require('../models/especialidadesModel')
 
 
 module.exports = {
 
 
-    getimagenes: (req, res) => {
-        imagenesModel.getimagenes((err, result) => {
+    getespecialidades: (req, res) => {
+        especialidadesModel.getespecialidades((err, result) => {
             if (err) {
                 res.status(500).json({ error: err.message });
                 console.log(err)
@@ -21,15 +21,15 @@ module.exports = {
     },
 
 
-    getimagenesById: (req, res) => {
-        const { id_usuario } = req.params;
-        imagenesModel.getimagenesById(id_usuario, (err, result) => {
+    getespecialidadById: (req, res) => {
+        const { id } = req.params;
+        especialidadesModel.getespecialidadById(id, (err, result) => {
             if (err) {
                 res.status(500).json({ error: err.message });
                 return;
             }
             else if (result.length === 0) {
-                res.status(404).json({ message: 'imagen no encontrada' });
+                res.status(404).json({ message: 'especialidad no encontrada' });
                 console.log(result)
                 console.log(err)
 
@@ -47,15 +47,15 @@ module.exports = {
 
 
 
-  createimagenes: (req, res)=>{
-        const {id_usuario, url, descripcion, estado}= req.body;
-        imagenesModel.createimagenes(id_usuario, url, descripcion, estado, (err, result) => {
+  createespecialidades: (req, res)=>{
+        const {nombre}= req.body;
+        especialidadesModel.createespecialidades(nombre, (err, result) => {
             if (err) {
                 res.status(500).json({ error: err.message });
                 console.log(err)
                 return;
             }
-            res.status(201).json({ message: 'Imagen creada con éxito', data: {idInsertado : result} });
+            res.status(201).json({ message: 'especialidad creada con éxito', data: {idInsertado : result} });
             
 
 
@@ -64,12 +64,12 @@ module.exports = {
 
 
 
-    updateimagenes: (req, res)=>{
+    updateespecialidades: (req, res)=>{
         
-        const {id_usuario}= req.params;
-        console.log("paso por el controlador con id deeeee", id_usuario)
-        const {url, descripcion, estado}= req.body;
-        imagenesModel.updateimagenes(id_usuario,url, descripcion, estado, (err, result)=>{
+        const {id}= req.params;
+        console.log("paso por el controlador con id deeeee", id)
+        const {nombre}= req.body;
+        especialidadesModel.updateespecialidades(id, nombre, (err, result)=>{
                 if (err){
                     res.status(500).json({error:err.message});
                     return;
@@ -77,10 +77,10 @@ module.exports = {
                 }
                 if (result.affectedRows===0){
 
-                    res.status(404).json({message:'Usuario no Encontrado, no fue posible asignar la imagen'});
+                    res.status(404).json({message:'especialidad no encontrada, no fue posible asignar actualizar'});
                     return;
                 }
-            res.status(200).json({ message: 'imagen actualizado con éxito'});
+            res.status(200).json({ message: 'especialidad actualizado con éxito'});
 
 
         })
@@ -90,11 +90,11 @@ module.exports = {
 
 
 
-    deleteimagenes: (req, res)=>{
+    deleteespecialidades: (req, res)=>{
         console.log("pinche cosa kk2")
 
         const {id}= req.params;
-        imagenesModel.deleteimagenes(id, (err, result)=>{
+        especialidadesModel.deleteespecialidades(id, (err, result)=>{
                 if (err){
                     res.status(500).json({error:err.message});
                     return;
@@ -102,10 +102,10 @@ module.exports = {
                 }
                 if (result.affectedRows===0){
 
-                    res.status(404).json({message:'Usuario no Encontrado, no fue posible eliminar la imagen'});
+                    res.status(404).json({message:'expecialidad no encontrada, no fue posible eliminar la especialidad'});
                     return;
                 }
-            res.status(200).json({ message: 'imagen eliminada con éxito'});
+            res.status(200).json({ message: 'especialidad eliminada con éxito'});
 
 
         })

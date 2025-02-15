@@ -1,8 +1,8 @@
-const recetasModel = require('../models/recetasModel')
+const salasModel = require('../models/salasModel')
 
 module.exports={
-    getrecetas:(req, res)=>{
-        recetasModel.getrecetas((err, result)=>{
+    getsalas:(req, res)=>{
+        salasModel.getsalas((err, result)=>{
             if (err){
                 res.status(500).json({error: err.message});
             console.log(err)
@@ -17,15 +17,15 @@ module.exports={
 
     },
 
-    getrecetasById:(req, res)=>{
-        const {id_usuario}= req.params;
-        recetasModel.getrecetasById(id_usuario,(err, result)=>{
+    getsalaById:(req, res)=>{
+        const {id_hospital}= req.params;
+        salasModel.getsalaById(id_hospital,(err, result)=>{
             if (err){
                 res.status(500).json({error: err.message});
                 return;
             }
             else if(result.length===0){
-                res.status(404).json({message: 'Receta no encontrada'});
+                res.status(404).json({message: 'salas no encontrada'});
                 return;
             }else{
                 res.status(200).json({data: result});
@@ -35,24 +35,24 @@ module.exports={
 
     },
 
-    createrecetas: (req, res)=>{
-        const {id_usuario, dosis, frecuencia, estado}= req.body;
-        recetasModel.createrecetas(id_usuario, dosis, frecuencia, estado, (err, result) => {
+    createsalas: (req, res)=>{
+        const {id_hospital, estado}= req.body;
+        salasModel.createsalas(id_hospital, estado, (err, result) => {
             if (err) {
                 res.status(500).json({ error: err.message });
                 console.log(err)
                 return;
             }
-            res.status(201).json({ message: 'Receta creada con exito', data: {idInsertado : result} });
+            res.status(201).json({ message: 'sala creada con exito', data: {idInsertado : result} });
             
 
         });
     },
 
-    updaterecetas: (req, res)=>{
-        const {id}= req.params;
-        const {dosis, frecuencia, estado}= req.body;
-        recetasModel.updaterecetas(id, dosis, frecuencia, estado, (err, result)=>{
+    updatesalas: (req, res)=>{
+        const {id_hospital}= req.params;
+        const {estado}= req.body;
+        salasModel.updatesalas(id_hospital,estado, (err, result)=>{
                 if (err){
                     res.status(500).json({error:err.message});
                     return;
@@ -60,10 +60,10 @@ module.exports={
                 }
                 if (result.affectedRows===0){
 
-                    res.status(404).json({message:'Receta no encontrada'});
+                    res.status(404).json({message:'sala no encontrada'});
                     return;
                 }
-            res.status(200).json({ message: 'Receta actualizada con exito'});
+            res.status(200).json({ message: 'sala actualizada con exito'});
 
 
         })
@@ -71,9 +71,9 @@ module.exports={
 
     },
 
-    deleterecetas: (req, res)=>{
-        const {id}= req.params;
-        recetasModel.deleterecetas(id, (err, result)=>{
+    deletesalas: (req, res)=>{
+        const {id_hospital}= req.params;
+        salasModel.deletesalas(id_hospital, (err, result)=>{
         
 
         if (err){
@@ -81,12 +81,12 @@ module.exports={
             console.log(err)
             return;
         }else if(result.affectedRows===0){
-            res.status(404).json({message:'Receta no encontrada'})
+            res.status(404).json({message:'sala no encontrada'})
             console.log(err)
 
             return;
         }else{
-            res.status(200).json({ message: 'Receta elimanada con exito'});
+            res.status(200).json({ message: 'sala elimanada con exito'});
 
         }
 
