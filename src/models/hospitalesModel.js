@@ -15,10 +15,10 @@ class hospitales {
     }
 
     //crear
-    createhospital(id,nombre_hospital, direccion_hospital,estado, callback){
+    createhospital(nombre_hospital, direccion_hospital,estado, callback){
 
-        const verif='SELECT * from hospitales WHERE id=?';
-        db.query(verif,[id, callback],(err, result)=>{
+        const verif='SELECT * from hospitales WHERE nombre_hospital=?';
+        db.query(verif,[nombre_hospital],(err, result)=>{
             if (err){
                 console.log(err)
                 return callback(err, null);
@@ -26,7 +26,7 @@ class hospitales {
 
             if (result.length===0){
                 
-                const sql = 'INSERT INTO hospitales (nombre_hospital, direccion_hospital) VALUES (?,?)';
+                const sql = 'INSERT INTO hospitales (nombre_hospital, direccion_hospital, estado) VALUES (?,?,?)';
                 db.query(sql, [nombre_hospital, direccion_hospital, estado],(err,result)=>{
                     if (err) {
                         return callback(err,null);
