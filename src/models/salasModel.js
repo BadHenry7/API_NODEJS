@@ -14,6 +14,17 @@ class salas {
         db.query(sql, [id_hospital], callback);
     }
 
+    getsalaByNombre(nombre_hospital, callback) {
+        const sql = `SELECT s.salas_nombre
+        from salas as s
+        inner join hospitales as h ON s.id_hospital=h.id
+         where h.nombre_hospital = ?;
+        
+        `
+        db.query(sql, [nombre_hospital], callback);
+    }
+
+
 
 
     createsalas(id_hospital, salas_nombre ,estado, callback) {
