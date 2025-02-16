@@ -36,6 +36,25 @@ module.exports={
 
     },
 
+
+    getsalaByNombre:(req, res)=>{
+        const {nombre_hospital}= req.params;
+        salasModel.getsalaByNombre(nombre_hospital,(err, result)=>{
+            if (err){
+                res.status(500).json({error: err.message});
+                return;
+            }
+            else if(result.length===0){
+                res.status(404).json({message: 'salas no encontrada'});
+                return;
+            }else{
+                res.status(200).json({data: result});
+            }
+            
+        });
+
+    },
+
     createsalas: (req, res)=>{
         const {id_hospital, estado}= req.body;
         salasModel.createsalas(id_hospital, salas_nombre, estado, (err, result) => {
