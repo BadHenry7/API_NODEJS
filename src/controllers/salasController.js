@@ -1,6 +1,7 @@
 const salasModel = require('../models/salasModel')
 
 module.exports={
+    
     getsalas:(req, res)=>{
         salasModel.getsalas((err, result)=>{
             if (err){
@@ -37,7 +38,7 @@ module.exports={
 
     createsalas: (req, res)=>{
         const {id_hospital, estado}= req.body;
-        salasModel.createsalas(id_hospital, estado, (err, result) => {
+        salasModel.createsalas(id_hospital, salas_nombre, estado, (err, result) => {
             if (err) {
                 res.status(500).json({ error: err.message });
                 console.log(err)
@@ -52,7 +53,7 @@ module.exports={
     updatesalas: (req, res)=>{
         const {id_hospital}= req.params;
         const {estado}= req.body;
-        salasModel.updatesalas(id_hospital,estado, (err, result)=>{
+        salasModel.updatesalas(id_hospital, salas_nombre, estado, (err, result)=>{
                 if (err){
                     res.status(500).json({error:err.message});
                     return;
