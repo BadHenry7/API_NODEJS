@@ -5,7 +5,7 @@ const personaRoutes= require ('./src/routes/personaRoutes');
 const especialidadesRoutes= require ('./src/routes/especialidadesRoutes');
 const hospitalesRoutes= require ('./src/routes/hospitalesRoutes');
 const salas_Routes= require ('./src/routes/salasRoutes');
-
+const sendSMSRoutes = require('./server'); 
 const cors = require("cors");
 const app = express();
 const port = 3000;
@@ -38,7 +38,7 @@ app.use('/api/hospitales', hospitalesRoutes);
 app.use('/api/especialidades', especialidadesRoutes);
 app.use('/api/salas', salas_Routes);
 
-
+app.use("/api", sendSMSRoutes);
 
 //iniciar el servidor
 
