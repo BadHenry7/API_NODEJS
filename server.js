@@ -8,9 +8,9 @@ const port = 3000;
 
 
 
-
-app.use(express.json());
-app.use(cors());
+const router = express.Router();
+// app.use(express.json());
+// app.use(cors());
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
@@ -19,7 +19,7 @@ console.log(accountSid)
 
 const client = twilio(accountSid, authToken);
 
-app.post("/send-sms", async (req, res) => {
+router.post("/send-sms", async (req, res) => {
     const { phoneNumber, message } = req.body;
 
     try {
@@ -42,6 +42,4 @@ app.post("/send-sms", async (req, res) => {
 });
 
 
-app.listen(port, () => {
-    console.log(`Servidor ejecutándose en el puerto ${port}`);
-});
+module.exports = router;
