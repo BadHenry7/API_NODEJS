@@ -21,7 +21,8 @@ app.use(
         "https://f882-191-110-53-32.ngrok-free.app", // Ngrok
         "https://3f44-191-110-53-32.ngrok-free.app", // Ngrok
         "https://api-nodejs-buxf.onrender.com",
-        "https://red-neurolal-svelte.onrender.com"
+        "https://red-neurolal-svelte.onrender.com", 
+        "http://localhost:4200/"//Angular
       ],
       credentials: true, // Si necesitas enviar cookies o headers con autenticación
       methods: ["GET", "POST", "PUT", "DELETE"], // Métodos permitidos
