@@ -9,8 +9,6 @@ const mysql = require('mysql');
 
 // })
 
-const mysql = require('mysql');
-
 const db = mysql.createPool({
     connectionLimit: 10, 
     host: 'bfrrsop1jsm0voqgbgao-mysql.services.clever-cloud.com',
