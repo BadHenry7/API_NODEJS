@@ -1,14 +1,24 @@
 const mysql = require('mysql');
 
-const db = mysql.createConnection({
+// const db = mysql.createConnection({
+//     host: 'bfrrsop1jsm0voqgbgao-mysql.services.clever-cloud.com',
+//     user: 'uupmlcry92arfxpf',
+//     password: '4SPvFuFqzZtr7KeWgCxv',
+//     database: 'bfrrsop1jsm0voqgbgao',
+//     port: 3306
+
+// })
+
+const mysql = require('mysql');
+
+const db = mysql.createPool({
+    connectionLimit: 10, 
     host: 'bfrrsop1jsm0voqgbgao-mysql.services.clever-cloud.com',
     user: 'uupmlcry92arfxpf',
     password: '4SPvFuFqzZtr7KeWgCxv',
     database: 'bfrrsop1jsm0voqgbgao',
     port: 3306
-
-})
-
+});
 
 db.connect((err) => {
 
